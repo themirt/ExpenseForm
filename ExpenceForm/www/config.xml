@@ -8,6 +8,8 @@
         PhoneGap Team
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -54,7 +56,5 @@
     <access origin="http://127.0.0.1*" />
     <access origin="http://www.cosmeticamobile.com*" />
     <access origin="*" />
-    
-    <gap:plugin name="org.apache.cordova.network-information" />
     
 </widget>
