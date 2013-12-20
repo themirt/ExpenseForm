@@ -49,6 +49,8 @@ var app = {
 		 console.log('Received Event: ' + id);
 		 }, 2000);
 		 */
+		checkConnection();
+		
 		app.getProducts();
 		$('#products').bind('change', function(e) {
 			console.log(e);

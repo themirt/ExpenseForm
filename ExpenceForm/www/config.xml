@@ -54,4 +54,7 @@
     <access origin="http://127.0.0.1*" />
     <access origin="http://www.cosmeticamobile.com*" />
     <access origin="*" />
+    
+    <gap:plugin name="org.apache.cordova.network-information" />
+    
 </widget>
