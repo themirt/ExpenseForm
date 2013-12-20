@@ -50,13 +50,13 @@ var app = {
 		 }, 2000);
 		 */
 		checkConnection();
-		
+
 		app.getProducts();
 		$('#products').bind('change', function(e) {
 			console.log(e);
 			console.warn(e.currentTarget.value);
-			
-			var ind = e.currentTarget.selectedIndex-1;
+
+			var ind = e.currentTarget.selectedIndex - 1;
 			var prod = app.productList[ind];
 			console.dir(prod);
 			$('#img1').attr('src', prod.ImageUrl);
@@ -85,6 +85,28 @@ var app = {
 				console.log("err b", c);
 			}
 		});
+	},
 
+	openCamera : function() {
+		var onCamSuccess = function(imageData) {
+			/* No action required */
+		};
+
+		var onCamFail = function(error) {
+			/* No action required */
+			//alert('Kamera kullanılamıyor (' + error.code + ')');
+		};
+		
+		var cameraPopoverHandle = navigator.camera.getPicture(onCamSuccess, onCamFail, {
+			quality : 25,
+			allowEdit : false,
+			sourceType : Camera.PictureSourceType.CAMERA,
+			destinationType : Camera.DestinationType.DATA_URL,
+			encodingType : Camera.EncodingType.JPEG,
+			cameraDirection : Camera.Direction.FRONT,
+			targetWidth : 80,
+			targetHeight : 80,
+			saveToPhotoAlbum : false
+		});
 	}
 };
