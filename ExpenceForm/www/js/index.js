@@ -51,6 +51,8 @@ var app = {
 		 */
 		checkConnection();
 
+		loadMapScript('app.mapLoaded');
+
 		app.getProducts();
 		$('#products').bind('change', function(e) {
 			console.log(e);
@@ -96,7 +98,7 @@ var app = {
 			/* No action required */
 			//alert('Kamera kullanılamıyor (' + error.code + ')');
 		};
-		
+
 		var cameraPopoverHandle = navigator.camera.getPicture(onCamSuccess, onCamFail, {
 			quality : 25,
 			allowEdit : false,
@@ -108,5 +110,51 @@ var app = {
 			targetHeight : 80,
 			saveToPhotoAlbum : false
 		});
+	},
+
+	detectCurrentLocation : function() {
+		var onGeoSuccess = function(position) {
+			console.log(position);
+
+			var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+			google.maps.visualRefresh = true;
+
+			var mapOptions = {
+				zoom : 13,
+				center : location,
+				rotateControl : false,
+				streetViewControl : false,
+				mapTypeControl : false,
+				draggable : true,
+				mapTypeId : google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+			var currentLocationMarker = new google.maps.Marker({
+				position : location,
+				map : map,
+				bounds : false,
+				title : 'Buradasınız',
+				//icon : image,
+				//shape : shape,
+				optimized : false
+				//animation : google.maps.Animation.BOUNCE
+			});
+		};
+
+		var onGeoFail = function(error) {
+			console.log(error);
+		};
+
+		navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoFail, {
+			timeout : 3000,
+			enableHighAccuracy : true
+		});
+	},
+
+	mapLoaded : function() {
+		console.log("mapLoaded");
+		app.detectCurrentLocation();
 	}
 };

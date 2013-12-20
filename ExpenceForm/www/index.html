@@ -32,6 +32,11 @@ under the License.
 		<title>Hello World</title>
 	</head>
 	<body>
+
+		<button onclick="app.detectCurrentLocation()">
+			Location
+		</button>
+
 		<button onclick="app.openCamera()">
 			Open Camera
 		</button>
@@ -43,7 +48,9 @@ under the License.
 		<select size="1" id="products" class="slc">
 			<option>abc</option>
 		</select>
-		
+
+		<div id="map" style="width: 250px; height: 250px;"></div>
+
 		<img src="" id="img1">
 
 		<script type="text/javascript" src="phonegap.js"></script>
