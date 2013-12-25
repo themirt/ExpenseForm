@@ -11,25 +11,48 @@
 
 		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
-		
-		
+
 		<script type="text/javascript" src="js/my.js"></script>
 
 		<title>GTech - ExpenseForm</title>
 	</head>
 	<body>
 		<div data-role="page">
-			<button id="btn_goPage2">Page 2</button>
+			<button id="btn_goMasraf">
+				Yeni Masraf Girişi
+			</button>
 			page 1
 		</div>
-		<div data-role="page" id="page2">
-			page 2
+
+		<div data-role="page" id="page-masraf">
+			<form action="http://localhost:49646/api/Costs/-1" type="PUT">
+				<label>Tarih</label>
+				<input type="date" id="COST_DATE">
+
+				<label>Müşteri</label>
+				<select id="CUSTOMER_ID"></select>
+
+				<label>Proje</label>
+				<select id="PROJECT_ID"></select>
+
+				<label>Masraf Tipi</label>
+				<select id="COST_TYPE_ID"></select>
+
+				<label>Miktar/Tutar</label>
+				<input type="text" id="COST_AMOUNT">
+
+				<label>Açıklama</label>
+				<input type="text" id="COST_DESCRIPTION">
+
+				<button id="btn_saveMasraf" type="submit">
+					Kaydet
+				</button>
+			</form>
 		</div>
+
 		<div data-role="page">
 			page 3
 		</div>
-		
-
 
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>

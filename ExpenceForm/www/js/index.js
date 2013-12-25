@@ -17,8 +17,8 @@ var app = {
 	},
 
 	initButtons : function() {
-		$('#btn_goPage2').bind('tap', function() {
-			$.mobile.changePage($("#page2"), {
+		$('#btn_goMasraf').bind('tap', function() {
+			$.mobile.changePage($("#page-masraf"), {
 				transition : "fade"
 			});
 		});
