@@ -50,12 +50,22 @@
 			</form>
 		</div>
 
-		<div data-role="page">
-			page 3
+		<div data-role="page" id="page-notification">
+			notification received
+			<br/>
+			<button id="btn_3" type="button">
+				Kaydet
+			</button>
+			<span id="not-info">ehheeh</span>
 		</div>
 
 		<script type="text/javascript" src="phonegap.js"></script>
+
+		<script type="text/javascript" src="PushNotification.js"></script>
+		<script src="pushwoosh.js" type="text/javascript"></script>
+
 		<script type="text/javascript" src="js/index.js"></script>
+
 		<script type="text/javascript">
 			app.initialize();
 		</script>
