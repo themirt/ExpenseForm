@@ -13,7 +13,37 @@ var app = {
 
 	receivedEvent : function(id) {
 		// uygulamanın başlangıç noktası
+		$.support.cors = true;
+
+		this.bindPageShowEvents();
 		this.initButtons();
+	},
+
+	bindPageShowEvents : function() {
+		var self = this;
+		$('#page-masraf').bind("pageshow", function() {
+			self.fillCustomerList();
+		});
+	},
+
+	fillCustomerList : function() {
+		$.ajax({
+			url : "http://localhost:49646/api/Customers",
+			dataType : "jsonp",
+			success : function(a, b, c) {
+				console.log("succ a", a);
+			},
+			error : function(a, b, c) {
+				console.log("err a", a);
+				console.log("err b", b);
+				console.log("err b", c);
+			}
+		});
+		/*
+		 $.getJSON("http://localhost:49646/api/Customers", function(data) {
+		 console.debug(data);
+		 });
+		 */
 	},
 
 	initButtons : function() {
@@ -23,7 +53,6 @@ var app = {
 			});
 		});
 	}
-	
 	/*
 	 getProducts : function() {
 	 $.ajax({
