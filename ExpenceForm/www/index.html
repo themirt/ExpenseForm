@@ -1,70 +1,673 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="format-detection" content="telephone=no" />
-		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<title>ui</title>
+		<meta name="description" content="">
+		<meta name="author" content="myerli">
+		<meta charset="utf-8">
+
+		<!--<meta name="viewport" content="width=device-width; initial-scale=1.0">-->
+		<!--<meta name="viewport" content="width=device-width, user-scalable=no" />-->
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.0.min.css" />
+		<!-- jquery files -->
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.0-beta.1.min.css">
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery.mobile-1.4.0-beta.1.min.js"></script>
 
-		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+		<!-- swiper files -->
+		<link rel="stylesheet" href="css/idangerous.swiper.css" />
+		<link rel="stylesheet" href="css/swiper.custom.css" />
+		<script src="js/idangerous.swiper-2.2.min.js"></script>
 
-		<script type="text/javascript" src="js/my.js"></script>
-
-		<title>GTech - ExpenseForm</title>
-	</head>
-	<body>
-		<div data-role="page">
-			<button id="btn_goMasraf">
-				Yeni Masraf Girişi
-			</button>
-			page 1
-		</div>
-
-		<div data-role="page" id="page-masraf">
-			<form action="http://localhost:49646/api/Costs/-1" type="PUT">
-				<label>Tarih</label>
-				<input type="date" id="COST_DATE">
-
-				<label>Müşteri</label>
-				<select id="CUSTOMER_ID"></select>
-
-				<label>Proje</label>
-				<select id="PROJECT_ID"></select>
-
-				<label>Masraf Tipi</label>
-				<select id="COST_TYPE_ID"></select>
-
-				<label>Miktar/Tutar</label>
-				<input type="text" id="COST_AMOUNT">
-
-				<label>Açıklama</label>
-				<input type="text" id="COST_DESCRIPTION">
-
-				<button id="btn_saveMasraf" type="submit">
-					Kaydet
-				</button>
-			</form>
-		</div>
-
-		<div data-role="page" id="page-notification">
-			notification received
-			<br/>
-			<button id="btn_3" type="button">
-				Kaydet
-			</button>
-			<span id="not-info">ehheeh</span>
-		</div>
-
-		<script type="text/javascript" src="phonegap.js"></script>
-
-		<script type="text/javascript" src="PushNotification.js"></script>
-		<script type="text/javascript" src="js/pushwoosh.js" ></script>
-
+		<!-- custom files -->
+		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/jquery.transit.min.js"></script>
+		<script type="text/javascript" src="js/String.js"></script>
+		<script src="zoom_assets/jquery.smoothZoom.min.js"></script>
+		<script type="application/javascript" src="js/iscroll-zoom.js"></script>
+		<link rel="stylesheet" href="css/cosmetica.css" />
+		<!--<link rel="stylesheet" href="css/katalog-beta.css" />-->
+
+		<!-- phonegap default -->
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript" src="barcodescanner.js"></script>
+		<script type="text/javascript" src="js/plugins/SocialSharing.js"></script>
+		<script type="text/javascript" src="SplashScreen.js"></script>
+		<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/pushwoosh.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova.localNotification.js"></script>
+
+		<!--
+		<script type="text/javascript" src="PushNotification.js"></script>
+		<script src="pushwoosh.js" type="text/javascript"></script>
+		-->
+
+		<!-- google map files --
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&libraries=geometry" type="text/javascript"></script>
+		--
+		<script src="js/jq-map/jquery.ui.map.full.min.js" type="text/javascript"></script>
+		-->
+		<script type="text/javascript">
+			/*
+			 var myScroll = null;
+			 function loaded() {
+			 myScroll = new IScroll('#wrapper', {
+			 zoom : true,
+			 zoomMax : 4
+			 });
+			 }
+
+
+			 document.addEventListener('touchmove', function(e) {
+			 e.preventDefault();
+			 }, false);
+
+			 document.addEventListener('DOMContentLoaded', loaded, false);
+			 */
+
+			/*
+			 document.addEventListener('touchmove', function(e) {
+			 e.preventDefault();
+			 }, false);
+			 */
+
+			document.addEventListener('click', function(e) {
+				e.preventDefault();
+				return false;
+			}, false);
+		</script>
+
+	</head>
+
+	<body>
+		<!-- jqm pages container -->
+		<div id="container">
+
+			<div data-role="page" id="first-page">
+				<div data-role="content">
+					<div class="ani-logo">
+						<img src=""/>
+					</div>					
+				</div>
+			</div>
+
+			<!-- animation page -->
+			<div data-role="page" id="ani-page">
+				<div data-role="content">
+					<!--<a id="btnTest" data-role="button" data-icon="home">Start</a>-->
+					<div id="ani-c"></div>
+
+					<div class="ani-logo">
+						<img src=""/>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Start of home page -->
+			<div data-role="page" id="home-page">
+				<!--
+				<div id="hp-header" data-role="header"><img id="home-header-pic" src="img/hp-sag-ust.png"/>
+				</div>
+				-->
+				<div data-role="content" class="swiper-container-parent">
+					<img id="home-header-pic" src="img/hp-sag-ust.png"/>
+					<div id="left-menu">
+						<a id="m1" class="large"><span class="badge">0</span></a>
+						<a id="m2" class="large"><span class="badge">0</span></a>
+						<a id="m3" class="large"><span class="badge">0</span></a>
+						<a id="m4" class="large"></a>
+						<a id="m5" class="large"></a>
+						<a id="m6" class="large"></a>
+						<a id="m7" class="large"></a>
+						<a id="m8" class="large"></a>
+						<a id="m9" class="small"></a>
+					</div>
+
+					<div id="swiper-home" class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" page-id=""><img src="img/b00.jpg" height="100%"/>
+							</div>
+						</div>
+						<div id="pagination-home" class="pagination"></div>
+
+						<img id="home-carousel-tap-image" src="img/home-tap.png" />
+					</div>
+
+				</div><!-- /content -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-yeniurun">
+
+				<div data-role="header">
+					<img src="img/header_09.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="swiper-container-parent sized-content">
+
+					<!-- class="swiper-container" -->
+					<div id="carousel1" class="carousel-sub">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								waiting...
+							</div>
+						</div>
+					</div>
+					<div id="carousel1-pagination" class="pagination middle"></div>
+
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-firsat">
+
+				<div data-role="header">
+					<img src="img/header_11.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="swiper-container-parent sized-content">
+
+					<div id="carousel2" class="carousel-sub">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								waiting...
+							</div>
+						</div>
+					</div>
+					<div id="carousel2-pagination" class="pagination middle"></div>
+
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-guzellik">
+
+				<div data-role="header">
+					<img src="img/header_06.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="sized-content">
+					<div class="brick b1-1"><img src="img/goz.png" width="100%"/><span class="badge">0</span>
+					</div>
+					<div class="brick b1-2"><img src="img/1.png" width="100%"/>
+					</div>
+					<div class="brick b1-3"><img src="img/8.png" width="100%"/>
+					</div>
+					<div class="brick b2-1"><img src="img/yuz.png" width="100%"/><span class="badge">0</span>
+					</div>
+					<div class="brick b2-2"><img src="img/2.png" width="100%"/>
+					</div>
+					<div class="brick b2-3"><img src="img/7.png" width="100%"/>
+					</div>
+					<div class="brick b3-1"><img src="img/dudak.png" width="100%"/><span class="badge">0</span>
+					</div>
+					<div class="brick b3-2"><img src="img/3.png" width="100%"/>
+					</div>
+					<div class="brick b3-3"><img src="img/6.png" width="100%"/>
+					</div>
+					<div class="brick b4-1"><img src="img/tirnak.png" width="100%"/><span class="badge">0</span>
+					</div>
+					<div class="brick b4-2"><img src="img/4.png" width="100%"/>
+					</div>
+					<div class="brick b4-3"><img src="img/5.png" width="100%"/>
+					</div>
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-guzellik-b">
+
+				<div data-role="header">
+					<img src="img/header_06.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div id="gsbContent" data-role="content" class="sized-content">
+					<!--
+					<div class="ui-grid-a" id="gsTemplateB">
+					</div>
+					-->
+					<ul id="gsTemplateB"></ul>
+
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-back-gs"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-guzellik-c">
+
+				<div data-role="header">
+					<img src="img/header_06.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div id="gsbContent2" data-role="content" class="sized-content"></div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-back-gs-b"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-katalog">
+
+				<div data-role="header">
+					<img src="img/header_14.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="sized-content">
+					<div class="close rot90">
+						Kapat
+					</div>
+					<div class="loading rot90">
+						Katalog Yükleniyor
+						<br>
+						<span class="badge"></span>
+					</div>
+
+					<div id="wrapper-katalog">
+						<div id="scroller-katalog"></div>
+					</div>
+
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-back"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-sosyal">
+
+				<div data-role="header">
+					<img src="img/header_16.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="sized-content">
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><img class="sm sfb" src="img/social_35.png" src2="img/social-pressed_39.png" width="100%"/>
+						</div>
+						<div class="ui-block-b"><img class="sm stw" src="img/social_37.png" src2="img/social-pressed_41.png" width="100%"/>
+						</div>
+						<div class="ui-block-a"><img class="sm sgp" src="img/social_43.png" src2="img/social-pressed_48.png" width="100%"/>
+						</div>
+						<div class="ui-block-b"><img class="sm sfs" src="img/social_45.png" src2="img/social-pressed_50.png" width="100%"/>
+						</div>
+					</div><!-- /grid-c -->
+				</div>
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+
+				</div><!-- /footer -->
+
+			</div>
+
+			<!-- Start of page apps -->
+			<div data-role="page" id="page-uygulama">
+
+				<div data-role="header">
+					<img src="img/header_18.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="sized-content">
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><img class="fm app1" src="img/apps_39.png" src2="img/apps_39p.png" width="70%"/>
+						</div>
+						<div class="ui-block-b app1">
+							<p>
+								&nbsp;
+							</p>
+							<p>
+								QR Kod Okuyucu
+							</p>
+						</div>
+						<div class="ui-block-a"><img class="fm app2" src="img/apps_49.png" src2="img/apps_49p.png" width="70%"/>
+						</div>
+						<div class="ui-block-b app2">
+							<p>
+								&nbsp;
+							</p>
+							<p>
+								Ayna
+							</p>
+						</div>
+
+					</div><!-- /grid-c -->
+				</div>
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div>
+
+			<!-- Start of page form -->
+			<div data-role="page" id="page-form">
+
+				<div data-role="header">
+					<img src="img/header_20.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div class="customer-form sized-content" data-role="content">
+
+					<div class="customer-field">
+						<label for="tbAdSoyad" >Adı Soyadı</label>
+						<input type="text" id="tbAdSoyad" value="" data-mini="true" data-theme="b"/>
+					</div>
+
+					<div class="customer-field">
+						<label id="lbDogumTar" for="tbDogumTar">Doğum Tarihi<span>(19xx-01-01)</span></label>
+						<input type="date" id="tbDogumTar" value="" data-mini="true" data-theme="b"/>
+					</div>
+
+					<div class="customer-field">
+						<label for="tbTel">Gsm/Tel No</label>
+						<input type="number" pattern="[0-9]*" id="tbTel" value="" data-mini="true" data-theme="b"/>
+
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<label for="cbxSms" class="form-flip-lbl">Sms ile bilgilendir</label>
+							</div>
+							<div class="ui-block-b">
+								<select name="cbxSms" id="cbxSms" data-role="slider" data-mini="true" data-theme="b">
+									<option value="off">Hayır</option>
+									<option value="on" selected="selected">Evet</option>
+								</select>
+							</div>
+						</div><!-- /grid-c -->
+					</div>
+
+					<div class="customer-field">
+						<label for="tbEmail">E-mail adresi</label>
+						<input type="email" id="tbEmail" value="" data-mini="true" data-theme="b"/>
+
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<label for="cbxEmail" class="form-flip-lbl">E-mail ile bilgilendir</label>
+							</div>
+							<div class="ui-block-b">
+								<select name="cbxEmail" id="cbxEmail" data-role="slider" data-mini="true" data-theme="b">
+									<option value="off">Hayır</option>
+									<option value="on" selected="selected">Evet</option>
+								</select>
+							</div>
+						</div><!-- /grid-c -->
+					</div>
+
+					<p>
+						<input id="btnSubmitForm" type="button" value="Gönder" data-theme="b" />
+					</p>
+					<div class="android-form-correction">
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+					</div>
+				</div>
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div>
+
+			<!-- Start of page map a -->
+			<div data-role="page" id="page-harita">
+
+				<div data-role="header">
+					<img src="img/header_22.png" width="100%"/>
+				</div>
+
+				<div data-role="content" class="sized-content">
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><img class="fm b1" src="img/mag_35.png" src2="img/magp_35.png" width="100%"/>
+						</div>
+						<div class="ui-block-b"><img class="fm b2" src="img/mag_36.png" src2="img/magp_36.png" width="100%"/>
+						</div>
+					</div><!-- /grid-c -->
+
+					<div id="shop-list">
+						<div class="info">
+							Mağaza listesi alınıyor...
+						</div>
+
+						<ul class="liste">
+							<li onclick="goMap(app.shopList.shops[{4}])">
+								<span class="title">{0}</span><span class="address">{1}</span>
+								<br/>
+								<span class="tel">Tel: {2}</span><span class="badge">{3}</span>
+							</li>
+						</ul>
+					</div>
+
+					<div id="location-info">
+						Konum bilgisi alınıyor...
+					</div>
+
+					<div class="infobox-wrapper">
+						<div id="infobox">
+							The contents of your info box. It's very easy to create and customize.
+						</div>
+					</div>
+
+					<div id="map">
+						<!-- map loads here... -->
+					</div>
+
+					<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+						<div>
+							<a class="fb-home"></a>
+							<a class="fb-share"></a>
+							<a class="fb-back"></a>
+							<a class="fb-settings"></a>
+						</div>
+					</div><!-- /footer -->
+
+				</div>
+			</div>
+
+			<!-- Start of page map b -->
+			<div data-role="page" id="page-harita-detail">
+
+				<div data-role="header">
+					<img src="img/header_22.png" width="100%"/>
+				</div>
+
+				<div data-role="content" class="sized-content" id="shop-detail">
+
+					<div class="container">
+						<img src="img/icon-72-2x.png" width="33%" />
+						<div class="caption"></div>
+						<div class="address"></div>
+						<div class="phone"></div>
+						<div class="distance"></div>
+					</div>
+
+				</div>
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-back-map"></a>
+						<a class="fb-settings"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div>
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-ayarlar">
+
+				<div data-role="header">
+					<img src="img/header_17.png" width="100%"/>
+				</div><!-- /header -->
+
+				<div data-role="content" class="sized-content">
+
+					<div>
+						<label class="settingDesc">Lütfen anlık bildirim almak istediğiniz kategorileri belirtiniz.</label>
+					</div>
+
+					<label for="cbxSetting1">Yeni Ürünler</label>
+					<input type="checkbox" id="cbxSetting1" data-theme="b" data-mini="false" data-iconpos="right" checked="checked" onclick="app.putSetting('set1', this.checked);"/>
+
+					<label for="cbxSetting2">Güncel Fırsatlar</label>
+					<input type="checkbox" id="cbxSetting2" data-theme="b" data-mini="false" data-iconpos="right" checked="checked" onclick="app.putSetting('set2', this.checked);"/>
+
+					<label for="cbxSetting3">Güzellik Sırları</label>
+					<input type="checkbox" id="cbxSetting3" data-theme="b" data-mini="false" data-iconpos="right" checked="checked" onclick="app.putSetting('set3', this.checked);"/>
+
+					<label for="cbxSetting4">İndirim Kataloğu</label>
+					<input type="checkbox" id="cbxSetting4" data-theme="b" data-mini="false" data-iconpos="right" checked="checked" onclick="app.putSetting('set4', this.checked);"/>
+
+					<div id="version-info"></div>
+				</div><!-- /content -->
+
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div>
+						<a class="fb-home"></a>
+						<a class="fb-share"></a>
+						<a class="fb-map"></a>
+						<a class="fb-back"></a>
+					</div>
+				</div><!-- /footer -->
+
+			</div><!-- /page -->
+
+			<!-- Start of page -->
+			<div data-role="page" id="page-gesture">
+
+				<div id="page-gesture-header" data-role="header">
+					<img src="img/header_14.png" width="100%" id="img17"/>
+				</div><!-- /header -->
+
+				<div id="page-gesture-content" data-role="content" class="swiper-container-parent sized-content">
+
+					<div class="close rot90">
+						Kapat
+					</div>
+					<div class="page-numbers rot90">
+						1 / ??
+					</div>
+					<div class="loading rot90">
+						Katalog Yükleniyor
+						<br>
+						<span class="badge">...</span>
+					</div>
+
+					<div id="carousel4">
+						<div class="swiper-wrapper"></div>
+					</div><!-- /content -->
+
+					<div id="carousel4-pagination" class="pagination middle"></div>
+
+					<!--
+					<div class="swiper-slide blue-slide"><img id="zoom-image1" src="" width="100%"></div>
+					<div class="swiper-slide red-slide"><img id="zoom-image2" src="" width="100%"></div>
+					<div class="swiper-slide orange-slide"><img id="zoom-image3" src="" width="100%"></div>
+					-->
+
+					<div id="page-gesture-footer" data-role="footer" data-position="fixed" data-tap-toggle="false">
+						<div>
+							<a class="fb-home"></a>
+							<a class="fb-share"></a>
+							<a class="fb-map"></a>
+							<a class="fb-back"></a>
+						</div>
+					</div><!-- /footer -->
+
+				</div><!-- /page -->
+
+			</div>
+		</div>
 
 		<script type="text/javascript">
 			app.initialize();

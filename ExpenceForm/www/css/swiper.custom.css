@@ -1,0 +1,42 @@
+.swiper-container-parent {
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 8px;
+	padding-bottom: 0;
+}
+.swiper-container {
+	width: 100%;
+	/*height: from code */
+}
+.desc {
+	margin-top: 18px;
+	/*width: 320px;*/
+	/*height: from code */
+	color: #fff;
+	text-shadow: none;
+	overflow-y: scroll;
+	text-align: center;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.pagination.middle {
+	position: absolute;
+	left: 0;
+	text-align: center;
+	/*top: from code */
+	width: 100%;
+	z-index: 99;
+}
+.swiper-pagination-switch {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	background: #e32086;
+	box-shadow: 0px 1px 2px #555 inset;
+	margin: 0 3px;
+	cursor: pointer;
+}
+.swiper-active-switch {
+	background: #f5f5f5;
+}
