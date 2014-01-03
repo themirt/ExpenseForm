@@ -255,11 +255,11 @@ announcementsObject.prototype = {
 	},
 
 	reload : function() {
-		alert("reload activated");
+		//alert("reload activated");
 		this.loader.loaded = false;
 		this.reloadRequested = true;
 		this.load();
-		alert("reload exit");
+		//alert("reload exit");
 	},
 
 	load : function() {

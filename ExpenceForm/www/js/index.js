@@ -1274,7 +1274,7 @@ var app = {
 
 			// TODO: Enter your own GCM Sender ID in the register call for Android
 			if (device.platform == 'android' || device.platform == 'Android') {
-				glog2.log("pushNotification.register", "app.onNotificationGCM");
+				//glog2.log("pushNotification.register", "app.onNotificationGCM");
 
 				pushNotification.register(app.pushSuccessHandler, app.pushErrorHandler, {
 					"senderID" : appCodes.push.androidSenderId,
@@ -1282,7 +1282,7 @@ var app = {
 				});
 
 			} else {
-				glog2.log("pushNotification.register", "app.onNotificationAPN");
+				//glog2.log("pushNotification.register", "app.onNotificationAPN");
 
 				pushNotification.register(app.pushTokenHandler, app.pushErrorHandler, {
 					"badge" : "true",
@@ -1332,7 +1332,7 @@ var app = {
 		PushWoosh.register(regId, function(data) {
 			//alert("PushWoosh register success: " + JSON.stringify(data));
 		}, function(errorRegistration) {
-			glog2.log("registerPushWooshService errorRegistration", errorRegistration);
+			//glog2.log("registerPushWooshService errorRegistration", errorRegistration);
 		});
 	},
 	// iOS
