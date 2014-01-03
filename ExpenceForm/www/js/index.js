@@ -1340,7 +1340,7 @@ var app = {
 		try {
 			setTimeout(function() {
 				app.announcements.reload();
-			}, 1000);
+			}, 800);
 
 			if (event.alert) {
 				showMessage(event.alert, "Bildirim");
@@ -1365,7 +1365,9 @@ var app = {
 	// Android
 	onNotificationGCM : function(e) {
 		try {
-			app.announcements.reload();
+			setTimeout(function() {
+				app.announcements.reload();
+			}, 800);
 
 			switch( e.event ) {
 				case 'registered':
