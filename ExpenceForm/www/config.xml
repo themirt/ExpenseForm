@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.gtech.expenseform" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-	<name>ExpenseForm</name>
+<widget id="com.gtech.cosmetica" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+	<name>Cosmetica</name>
 	<description>Güncel kampanyalarımızdan anında haberdar olmak ve en yakın mağazamıza kolayca ulaşmak için uygulamayı şimdi indirin.</description>
 	<author email="mertyerli@gmail.com" href="http://www.gtech.com.tr">GTech Mobile Team</author>
 	<preference name="permissions" value="none" />
@@ -44,7 +44,7 @@
 	<gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/screen-xhdpi-portrait.png" />
 	<gap:splash gap:platform="ios" height="480" src="res/screen/ios/screen-iphone-portrait.png" width="320" />
 	<gap:splash gap:platform="ios" height="960" src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
-	<gap:splash gap:platform="ios" height="640" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="1136" />
+	<gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
 
 	<gap:platform name="android" />
 	<gap:platform name="ios" />

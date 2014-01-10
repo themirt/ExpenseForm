@@ -1,4 +1,4 @@
-var internalVersion = "Version 1.0.2 Build:872";
+var internalVersion = "Version 1.0.3 Build:881";
 
 //var serviceHost = "http://www.gtech.com.tr/cosmetica";
 var serviceHost = "http://www.cosmeticamobile.com";
@@ -8,8 +8,8 @@ appCodes = {
 	push : {
 		//pushWooshAppCode : "83E51-9B80D",
 		//androidSenderId : "268470725852"
-		pushWooshAppCode : "01AA9-EA887",
-		androidSenderId : "0101010101"
+		pushWooshAppCode : "8929B-D7D16",
+		androidSenderId : "449671850278"
 	},
 	map : {
 		//keyForBrowser : 'AIzaSyCA2xVgSRWf11kzDaO-KIA7QUQvGU1odFc'
@@ -18,8 +18,8 @@ appCodes = {
 };
 /*
  * b58805c0606d742d MY XperiaZ
- * 1D457E0D-1433-4E4D-A274-B4288308AC7F GTech iPhone4
- *
+ * 3E2B3DC7-9A40-4D29-AE81-702EA3A64A8D MY iPhpne 3Gs
+ * BD7F2632-FB72-48B1-B67E-4F038D5E9780 GTech iPhone4
  */
 var debuggerDevices = ["b58805c0606d742d", "1D457E0D-1433-4E4D-A274-B4288308AC7F"];
 
